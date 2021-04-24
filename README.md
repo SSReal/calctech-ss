@@ -10,7 +10,7 @@ This is the first app that I made with React.js, also it was the first time I ho
 * Supports delete button to delete a character of the input
 
 ## Test it out!
-hosted on Heroku at [https://calctech-ss.herokuapp.com](calctech-ss.herokuapp.com)
+hosted on Heroku at [calctech-ss.herokuapp.com](https://calctech-ss.herokuapp.com)
 
 ## Find Bugs! & Suggest good programming practices!
 As this is my first attempt at making a web app, I may have missed some important things, if so, please feel free to open issues regarding that.
