@@ -20,6 +20,10 @@
     border-radius: 10px;
 }
 
+.header-box:hover {
+    transform: scale(1.05);
+}
+
 .calculator-box {
     min-width: 300px;
     max-width: 600px;
