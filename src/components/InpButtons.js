@@ -12,12 +12,15 @@ function InpButtons(props) {
             props.ans === "*" ||
             props.ans === "/") {
                 setOperation(null);
-                props.setAns(operand1);
+                props.setAns(operand1.toString());
                 return;
             }
         let newAns = props.ans.slice(0,-1);
         props.setAns(newAns);
-        setOperand2(parseFloat(newAns));
+        if(newAns.includes("."))
+            setOperand2(parseFloat(newAns));
+        else
+            setOperand2(parseInt(newAns));
     }
     function handleChange(event) {
         props.setDispEq(false);
@@ -27,16 +30,23 @@ function InpButtons(props) {
             props.ans === "/"
             ) {
             props.setAns(event.target.name);
-            setOperand2(parseFloat(event.target.name));
+            setOperand2(parseInt(event.target.name));
         }
         else {
             props.setAns(props.ans + event.target.name);
-            setOperand2(parseFloat(props.ans + event.target.name));
+            let newAns = props.ans + event.target.name;
+            if(newAns.includes("."))
+                setOperand2(parseFloat(newAns));
+            else
+                setOperand2(parseInt(newAns));
         }
     }
 
     function handleEquals() {
-        setOperand2(props.ans);
+        if(props.ans.includes("."))
+            setOperand2(parseFloat(props.ans));
+        else   
+            setOperand2(parseInt(props.ans));
         console.log(operand1);
         console.log(operand2);
         let answer;
@@ -59,18 +69,23 @@ function InpButtons(props) {
             }
         }
         else {
-            answer = parseFloat(props.ans);
+            if(props.ans.includes(".")) 
+                answer = parseFloat(props.ans);
+            else 
+                answer = parseInt(props.ans);
         }
-        answer = answer.toPrecision(5);
         props.setDispEq(true);
-        props.setAns(answer);
+        props.setAns(answer.toString());
         setOperand1(null);
         setOperation(null);
     }
 
     function handleOperation(event) {
         props.setDispEq(false);
-        setOperand1(parseFloat(props.ans));
+        if(props.ans.includes("."))
+            setOperand1(parseFloat(props.ans));
+        else 
+            setOperand1(parseInt(props.ans));
         props.setAns(event.target.name);
         setOperation(event.target.name);
         setOperand2(null);
